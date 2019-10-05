@@ -3,3 +3,19 @@
 # How to generate random string secret_key
 # import secrets
 # secrets.token_hex(16)
+
+# How to create the database
+# Lunch python
+# from flaskblog import db
+# db.create_all()
+
+# Query db
+# User.query.all()
+# User.query.first()
+# User.query.filter_by(username='ray').all()
+# User.query.filter_by(username='ray').first()
+# User.query.get(1)
+# post = Post.query.first()
+# post.author
+# db.drop_all()
+# db.create_all()
