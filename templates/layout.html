@@ -10,6 +10,11 @@
       rel="stylesheet"
       href="{{url_for('static', filename='css/main.css')}}"
     />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/form.css')}}"
+    />
+    
     {% block css %} {% endblock css %}
 
     <!-- title -->
@@ -27,16 +32,16 @@
         <div class="col_left">
           <h3>Flask Blog</h3>
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
           </ul>
         </div>
 
         <!-- Right Col -->
         <div class="col_right">
           <ul>
-            <li><a href="">Login</a></li>
-            <li><a href="">Register</a></li>
+            <li><a href="{{url_for('login')}}">Login</a></li>
+            <li><a href="{{url_for('register')}}">Register</a></li>
           </ul>
         </div>
       </nav>
@@ -44,14 +49,25 @@
     <!-- Body -->
     <main>
       <div class="main_wrapper">
+   
         <!-- Left -->
         <div class="col_left">
+           <!-- flash messages -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert {{category}}">
+                  <p>{{message}}</p>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           {% block content %} {% endblock content %}
         </div>
 
         <!-- Right -->
         <div class="col_right">
-          <h2>Our Side Bar</h2>
+          <h2>Updates</h2>
           <p>You can put a bunch of stuff here.</p>
           <ul>
             <li>Latest Blog</li>

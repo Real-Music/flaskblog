@@ -16,6 +16,8 @@
 :root {
   --txt_col: white;
   --base_col: #710202;
+  --p_col: dimgrey;
+  --border: 1px solid #8080802e;
 }
 
 /* Base */
@@ -28,13 +30,46 @@ a {
   display: block;
 }
 
+p {
+  color: var(--p_col);
+  font-size: 15px;
+}
+
+/* flash messages */
+div.alert {
+  border: var(--border);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+/* success alert */
+div.alert.success {
+  background: aliceblue;
+}
+
+div.alert.success p {
+  color: green !important;
+}
+
+/* danger alert */
+div.alert.danger {
+  background-color: antiquewhite;
+}
+
+div.alert.danger p {
+  color: red !important;
+}
+
 header nav,
 main .main_wrapper {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
 }
 
-/* Navigation Basr */
+/* Navigation Bar */
 header nav,
 header nav .col_left,
 header nav .col_right,
@@ -67,11 +102,27 @@ header nav a {
 /* Body */
 main .main_wrapper {
   display: grid;
-  grid-template-columns: 1fr 0.5fr;
-  grid-gap: 10px;
+  grid-template-columns: 1fr 250px;
+  grid-gap: 20px;
+  margin: 20px auto;
 }
 
 main .main_wrapper .col_right {
-  background-color: #711d1214;
-  padding: 20px;
+  border: var(--border);
+  padding: 15px;
+  height: fit-content;
+  border-radius: 5px;
+}
+
+main .main_wrapper .col_right h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+main .main_wrapper .col_right ul li {
+  border: var(--border);
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 15px;
 }

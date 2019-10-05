@@ -1,0 +1,79 @@
+/* Manual */
+label {
+  color: var(--p_col);
+  font-size: 15px;
+}
+
+.form-check {
+  margin: 15px 0;
+}
+
+.hr-line {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.small-help {
+  display: flex;
+}
+
+.small-help a {
+  margin-left: 15px !important;
+}
+
+small.fg-pass a {
+  margin-top: 15px;
+}
+
+.content-section {
+  border: var(--border);
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.content-section .form-group h2 {
+  text-align: center;
+  border-bottom: var(--border);
+  width: 100%;
+}
+
+.content-section .form-group .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+input {
+  border: none;
+  outline: none;
+  border: var(--border);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Error */
+input.invalid {
+  border: 1px solid red;
+}
+
+div.invalid span {
+  color: red;
+}
+
+input[type="submit"] {
+  background-color: #fff;
+  border: 1px solid var(--base_col);
+  color: var(--base_col);
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--base_col);
+  color: var(--txt_col);
+}

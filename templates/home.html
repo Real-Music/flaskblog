@@ -1,4 +1,4 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %} 
 
 <!-- css -->
 {% block css %}
@@ -8,6 +8,7 @@
 />{% endblock css %}
 
 <!-- Body -->
+{% block content %}
 <section>
   {% for post in posts %}
   <article>

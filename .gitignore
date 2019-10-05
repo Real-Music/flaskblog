@@ -1,2 +1,5 @@
 # Don't track content of these folders
 .vscode/
+# How to generate random string secret_key
+# import secrets
+# secrets.token_hex(16)
