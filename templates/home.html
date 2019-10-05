@@ -1,0 +1,28 @@
+{% extends 'layout.html' %} {% block content %}
+
+<!-- css -->
+{% block css %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/index/index.css')}}"
+/>{% endblock css %}
+
+<!-- Body -->
+<section>
+  {% for post in posts %}
+  <article>
+    <div class="article_name">
+      <a href="#" title="{{ post.author }}">{{ post.author }}</a>
+      <small>{{ post.post_date }}</small>
+    </div>
+    <div class="article_content">
+      <h1>
+        <a href="#" title="{{ post.title }}">{{ post.title }}</a>
+      </h1>
+      <p>{{ post.content }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+<!-- body -->
+{% endblock content %}

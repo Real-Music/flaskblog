@@ -1,0 +1,38 @@
+article {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  border: 1px solid #8080802e;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Name */
+article .article_name {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  align-items: baseline;
+  border-bottom: 1px solid #8080802e;
+  margin-bottom: 10px;
+}
+
+article .article_name small {
+  margin-left: 15px;
+  font-size: 12px;
+}
+
+article .article_name a {
+  color: cadetblue;
+  font-size: 14px;
+}
+
+/* Content */
+article .article_content h1 a {
+  color: var(--base_col);
+}
+
+article .article_content p {
+  color: dimgrey;
+  font-size: 15px;
+}

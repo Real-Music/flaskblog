@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/main.css')}}"
+    />
+    {% block css %} {% endblock css %}
+
+    <!-- title -->
+    {% if title %}
+    <title>Flask Blog - {{ title }}</title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <!-- left Col -->
+        <div class="col_left">
+          <h3>Flask Blog</h3>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+          </ul>
+        </div>
+
+        <!-- Right Col -->
+        <div class="col_right">
+          <ul>
+            <li><a href="">Login</a></li>
+            <li><a href="">Register</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Body -->
+    <main>
+      <div class="main_wrapper">
+        <!-- Left -->
+        <div class="col_left">
+          {% block content %} {% endblock content %}
+        </div>
+
+        <!-- Right -->
+        <div class="col_right">
+          <h2>Our Side Bar</h2>
+          <p>You can put a bunch of stuff here.</p>
+          <ul>
+            <li>Latest Blog</li>
+            <li>Advert</li>
+            <li>Comments</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- Js -->
+    {% block js %} {% endblock js %}
+  </body>
+</html>
