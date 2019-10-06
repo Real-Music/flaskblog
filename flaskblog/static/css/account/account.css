@@ -1,0 +1,19 @@
+div.account-section{
+    border: var(--border);
+    padding: 15px;
+}
+
+div.account-section img{
+    height: 125px;
+    width: 125px;
+    object-fit: cover;
+}
+
+div.content-section{
+    padding: 0 !important;
+    border: none !important;
+}
+
+.content-section .form-group h2{
+    text-align: right!important;
+}
