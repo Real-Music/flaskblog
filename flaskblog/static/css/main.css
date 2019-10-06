@@ -63,6 +63,15 @@ div.alert.danger p {
   color: red !important;
 }
 
+/* infor alert */
+div.alert.info{
+  background-color: wheat;
+}
+
+div.alert.info p {
+  color: chocolate;
+}
+
 header nav,
 main .main_wrapper {
   width: 60%;
