@@ -20,6 +20,65 @@
   --border: 1px solid #8080802e;
 }
 
+/* Confrim del */
+div.confirm_del {
+  height: 100vh;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+}
+
+.confirm_del .confirm_del_wrapper{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #0000006b;
+}
+
+.confirm_del .confirm_del_wrapper .message_blog{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-155%);
+  background-color: white;
+  padding: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
+.confirm_del .confirm_del_wrapper .message_blog h2{
+  text-align: center;
+  display: block;
+  width: 100%;
+  border-bottom: var(--border);
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons{
+  display: flex;
+  place-content: center;
+  margin-top: 20px;
+}
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_btn{
+  all: unset;
+  background-color: #008d94;
+  color: #ffffff!important;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_yes{
+  margin-left: 10px;
+  background-color: brown;
+}
+
 /* Base */
 ul {
   list-style-type: none;

@@ -41,3 +41,24 @@ article .article_name a {
 article .article_content h1 a {
   color: var(--base_col);
 }
+
+/* Edit and Del btn */
+article .update_post{
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+article .update_post a, article .update_post button{
+  background-color: #008d94;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+article .update_post button{
+  border: none;
+  margin-left: 10px;
+  background-color: brown;
+}

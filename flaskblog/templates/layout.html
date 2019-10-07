@@ -30,7 +30,11 @@
       <nav>
         <!-- left Col -->
         <div class="col_left">
-          <h3>Flask Blog</h3>
+          {% if current_user.is_authenticated %}
+            <h3>Flask Blog | {{current_user.username}}</h3>
+          {% else %}
+            <h3>Flask Blog</h3>
+          {% endif %}
           <ul>
             <li><a href="{{url_for('home')}}">Home</a></li>
             <li><a href="{{url_for('about')}}">About</a></li>

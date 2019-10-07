@@ -81,7 +81,7 @@ input[type="submit"]:hover {
 /* Textarea */
 textarea{
   height: 80px;
-  resize: none;
+  /* resize: none; */
   border-radius: 5px;
   padding: 5px;
 }
