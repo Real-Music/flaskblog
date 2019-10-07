@@ -16,6 +16,14 @@ article .article_name {
   align-items: baseline;
   border-bottom: 1px solid #8080802e;
   margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+article .article_name img{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 article .article_name small {
@@ -25,7 +33,8 @@ article .article_name small {
 
 article .article_name a {
   color: cadetblue;
-  font-size: 14px;
+  font-size: 17px;
+  display: inline;
 }
 
 /* Content */

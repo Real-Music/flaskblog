@@ -77,3 +77,11 @@ input[type="submit"]:hover {
   background-color: var(--base_col);
   color: var(--txt_col);
 }
+
+/* Textarea */
+textarea{
+  height: 80px;
+  resize: none;
+  border-radius: 5px;
+  padding: 5px;
+}

@@ -3,29 +3,15 @@ import datetime
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt
-from flaskblog.form import RegistrationForm, LoginForm, UpdateAccountForm
+from flaskblog.form import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
-
-posts = [
-    {
-        'author': 'Fedjio Raymond',
-        'title': 'Blog',
-        'content': 'First post blog',
-        'post_date': 'July 27, 1996'
-    },
-    {
-        'author': 'Nema Dede',
-        'title': 'Blog 2',
-        'content': 'Second post blog',
-        'post_date': 'January 27, 2019'
-    }
-]
 
 # Home
 @app.route('/')
 @app.route('/home')
 def home():
+    posts = Post.query.all()
     return render_template('home.html', posts=posts)
 
 # About
@@ -87,7 +73,7 @@ def save_picture(form_picture):
     f_name, f_ext = os.path.splitext(form_picture.filename)
     picture_fin = f_name + current_date.strftime('%d-%m-%Y-%I:%M:%S:%f') + f_ext
     picture_path = os.path.join(app.root_path, 'static/img/profile', picture_fin)
-    
+
     # Resize Image
     img_size = (125,125)
     i = Image.open(form_picture)
@@ -119,3 +105,22 @@ def account():
     image_file = url_for('static', filename=f'img/profile/{current_user.image_file}' )
     return render_template('account.html', title='Account',image_file=image_file, form = form)
 
+# New Post
+@app.route('/post/new', methods=['GET','POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data,author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post',form = form)
+
+# Update
+@app.route('/post/<int:post_id>')
+@login_required
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', title=post.title, post=post)
