@@ -18,7 +18,7 @@
           alt="{{ post.author.username }}"
         />
         <a
-          href="{{url_for('user_post', username=post.author.username)}}"
+          href="{{url_for('users.user_post', username=post.author.username)}}"
           title="{{ post.author }}"
           >{{ post.author.username }}</a
         >
@@ -31,7 +31,7 @@
     </div>
     {% if post.author == current_user %}
     <div class="update_post">
-      <a href="{{url_for('update_post', post_id=post.id)}}">Edit Post</a>
+      <a href="{{url_for('posts.update_post', post_id=post.id)}}">Edit Post</a>
       <button class="del">Delete</button>
     </div>
     {% endif %}
@@ -75,7 +75,7 @@
     // Form
     var f = document.createElement("form");
     f.setAttribute("method", "POST");
-    f.setAttribute("action", "{{url_for('delete_post', post_id=post.id)}}");
+    f.setAttribute("action", "{{url_for('posts.delete_post', post_id=post.id)}}");
     var s = create_element("input", "alert_btn alert_yes"); //input element, Submit button
     s.setAttribute("type", "submit");
     s.setAttribute("value", "Delete");
