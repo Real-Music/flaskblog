@@ -28,20 +28,20 @@ div.confirm_del {
   position: absolute;
 }
 
-.confirm_del .confirm_del_wrapper{
+.confirm_del .confirm_del_wrapper {
   position: relative;
   height: 100%;
   width: 100%;
   background: #0000006b;
 }
 
-.confirm_del .confirm_del_wrapper .message_blog{
+.confirm_del .confirm_del_wrapper .message_blog {
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-155%);
+  transform: translate(-50%, -155%);
   background-color: white;
   padding: 35px;
   padding-top: 10px;
@@ -49,7 +49,7 @@ div.confirm_del {
   border-radius: 5px;
 }
 
-.confirm_del .confirm_del_wrapper .message_blog h2{
+.confirm_del .confirm_del_wrapper .message_blog h2 {
   text-align: center;
   display: block;
   width: 100%;
@@ -58,15 +58,15 @@ div.confirm_del {
   margin-bottom: 10px;
 }
 
-.confirm_del .confirm_del_wrapper .message_blog .alert_buttons{
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons {
   display: flex;
   place-content: center;
   margin-top: 20px;
 }
-.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_btn{
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_btn {
   all: unset;
   background-color: #008d94;
-  color: #ffffff!important;
+  color: #ffffff !important;
   border-radius: 4px;
   font-size: 15px;
   padding: 5px 10px;
@@ -74,7 +74,7 @@ div.confirm_del {
   cursor: pointer;
 }
 
-.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_yes{
+.confirm_del .confirm_del_wrapper .message_blog .alert_buttons .alert_yes {
   margin-left: 10px;
   background-color: brown;
 }
@@ -123,12 +123,38 @@ div.alert.danger p {
 }
 
 /* infor alert */
-div.alert.info{
+div.alert.info {
   background-color: wheat;
 }
 
 div.alert.info p {
   color: chocolate;
+}
+
+/* Pagination */
+div.pagination {
+  display: flex;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+}
+
+div.pagination .links {
+  border: var(--border);
+  padding: 3px 10px;
+  border-color: cadetblue;
+  color: cadetblue;
+  border-radius: 4px;
+  margin: 0 5px;
+  text-align: center;
+}
+
+div.pagination .links:first-child {
+  margin-left: 0px;
+}
+
+div.pagination .links.current {
+  background-color: cadetblue;
+  color: var(--txt_col);
 }
 
 header nav,
@@ -151,6 +177,10 @@ header nav ul {
 
 header {
   background-color: var(--base_col);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 header nav {

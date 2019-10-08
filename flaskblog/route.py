@@ -11,7 +11,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route('/')
 @app.route('/home')
 def home():
-    posts = Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(
+        Post.date_post.desc()).paginate(page=page, per_page=5)
     return render_template('home.html', posts=posts)
 
 # About
@@ -68,14 +70,17 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+
 def save_picture(form_picture):
     current_date = datetime.datetime.now()
     f_name, f_ext = os.path.splitext(form_picture.filename)
-    picture_fin = f_name + current_date.strftime('%d-%m-%Y-%I:%M:%S:%f') + f_ext
-    picture_path = os.path.join(app.root_path, 'static/img/profile', picture_fin)
+    picture_fin = f_name + \
+        current_date.strftime('%d-%m-%Y-%I:%M:%S:%f') + f_ext
+    picture_path = os.path.join(
+        app.root_path, 'static/img/profile', picture_fin)
 
     # Resize Image
-    img_size = (125,125)
+    img_size = (125, 125)
     i = Image.open(form_picture)
     i.thumbnail(img_size)
 
@@ -102,21 +107,23 @@ def account():
     elif request.method == "GET":
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for('static', filename=f'img/profile/{current_user.image_file}' )
-    return render_template('account.html', title='Account',image_file=image_file, form = form)
+    image_file = url_for(
+        'static', filename=f'img/profile/{current_user.image_file}')
+    return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 # New Post
-@app.route('/post/new', methods=['GET','POST'])
+@app.route('/post/new', methods=['GET', 'POST'])
 @login_required
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data,author=current_user)
+        post = Post(title=form.title.data,
+                    content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
         return redirect(url_for('home'))
-    return render_template('create_post.html', title='New Post',form = form, legend='New Post')
+    return render_template('create_post.html', title='New Post', form=form, legend='New Post')
 
 # View Post
 @app.route('/post/<int:post_id>')
@@ -125,7 +132,7 @@ def post(post_id):
     return render_template('post.html', title=post.title, post=post)
 
 # Update Post
-@app.route('/post/<int:post_id>/update', methods=['GET','POST'])
+@app.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -145,7 +152,7 @@ def update_post(post_id):
         form.title.data = post.title
         form.content.data = post.content
 
-    return render_template('create_post.html', title='Update Post',form = form, legend='Update Post')
+    return render_template('create_post.html', title='Update Post', form=form, legend='Update Post')
 
 # Update Post
 @app.route('/post/<int:post_id>/delete', methods=['POST'])
@@ -156,6 +163,15 @@ def delete_post(post_id):
     if post.author != current_user:
         abort(403)
     db.session.delete(post)
-    db.session.commit() 
+    db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+# View All Post For a Particular User
+@app.route('/user/<string:username>')
+def user_post(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user).order_by(
+        Post.date_post.desc()).paginate(page=page, per_page=5)
+    return render_template('user_post.html', title='User Post', posts=posts, user=user)
