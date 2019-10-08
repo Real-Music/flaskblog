@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+<!-- css -->
+{% block css %} {% endblock css %}
+<!-- Body -->
+{% block content %}
+
+<div class="content-section">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <h2 class="border-bottom mb-4">Reset Password</h2>
+
+      <!-- Email -->
+      <div class="form-group">
+        {{ form.email.label(class='form-control-label') }}
+        {% if form.email.errors %}
+        {{form.email(class='form-control invalid')}}
+        <div class="invalid">
+          {% for error in form.email.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{form.email(class='form-control')}}
+        {% endif %}
+      </div>
+    </div>
+    <div class="form-group">
+      {{ form.submit(class='btn') }}
+    </div>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+<!-- css -->
+{% block css %} {% endblock css %}
+<!-- Body -->
+{% block content %}
+
+<div class="content-section">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <h2 class="border-bottom mb-4">Reset Password</h2>
+
+      <!-- Password -->
+      <div class="form-group">
+        {{ form.password.label(class='form-control-label') }}
+        {% if form.password.errors %}
+        {{form.password(class='form-control invalid')}}
+        <div class="invalid">
+          {% for error in form.password.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{form.password(class='form-control')}}
+        {% endif %}
+      </div>
+      
+      <!-- confirm_Password -->
+      <div class="form-group">
+        {{ form.confirm_password.label(class='form-control-label') }}
+        {% if form.confirm_password.errors %}
+        {{form.confirm_password(class='form-control invalid')}}
+        <div class="invalid">
+          {% for error in form.confirm_password.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{form.confirm_password(class='form-control')}}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form.submit(class='btn') }}
+    </div>
+  </form>
+</div>
+{% endblock content %}
